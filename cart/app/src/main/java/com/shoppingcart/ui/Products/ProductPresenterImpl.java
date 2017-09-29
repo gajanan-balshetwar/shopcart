@@ -40,7 +40,7 @@ public class ProductPresenterImpl implements ProductPresenter {
         @Override
         public void onSuccess(List<Product> products) {
             productView.hideProgressDialog();
-            if(!productList.equals(productList)){
+            if(productList == null || !productList.equals(productList)){
                 productList = products;
                 productView.showTheProductList(productList);
             }

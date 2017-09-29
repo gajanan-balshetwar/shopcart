@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardBackgroundColor="#fff"
+        card_view:cardCornerRadius="1dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:contentPadding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_product_image"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/txt_pname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="Product Name"
+                android:textColor="@color/title_text_black"
+                android:textSize="@dimen/sp_18" />
+
+            <TextView
+                android:id="@+id/txt_pamount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="Price"
+                android:textColor="@color/title_text_black"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/txt_vname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_15"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="Vender Name"
+                android:textColor="@color/title_text_black"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/txt_vaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:lines="2"
+                android:text="Vendor Address"
+                android:textColor="@color/title_text_black"
+                android:textSize="@dimen/sp_12" />
+
+            <Button
+                android:id="@+id/btn_add_cart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:background="#7986CB"
+                android:textColor="@color/title_text_white"
+                android:text="@string/add_to_cart" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

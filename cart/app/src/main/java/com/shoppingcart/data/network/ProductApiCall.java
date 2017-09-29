@@ -40,7 +40,11 @@ public class ProductApiCall {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("", error.getMessage());
-                productApiResponse.onError(error.networkResponse.statusCode, "Something went wrong. please try again");
+                if(error != null && error.networkResponse != null) {
+                    productApiResponse.onError(error.networkResponse.statusCode, "Something went wrong. please try again");
+                }else{
+                    productApiResponse.onError(10, "Something went wrong. please try again");
+                }
             }
         });
 

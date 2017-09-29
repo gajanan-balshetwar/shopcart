@@ -4,10 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.shoppingcart.ui.Products.ProductsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:layoutManager="LinearLayoutManager"
+        android:paddingTop="10dp"
+        tools:listitem="@layout/item_product" />
+
 
 </FrameLayout>

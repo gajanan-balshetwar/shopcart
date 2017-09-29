@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,20 @@ import com.shoppingcart.R;
 import com.shoppingcart.data.network.models.Product;
 import com.shoppingcart.util.CommonUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ProductsFragment extends Fragment implements ProductView{
 
+    public static final String TAG = ProductsFragment.class.getSimpleName() ;
     private OnFragmentInteractionListener mListener;
     private ProgressDialog progressDialog;
     private ProductPresenter presenter;
     private static ProductsFragment instance;
+
+    private RecyclerView rvProductList;
+    private ProductsRecyclerViewAdapter adapter;
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -48,19 +55,31 @@ public class ProductsFragment extends Fragment implements ProductView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_products, container, false);
+        View view = inflater.inflate(R.layout.fragment_products, container, false);
+        rvProductList = view.findViewById(R.id.list);
+        rvProductList.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
+        adapter = new ProductsRecyclerViewAdapter(new ArrayList<Product>(), this.mListener);
+        rvProductList.setAdapter(adapter);
+        return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.afterViewStarted();
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
+            mListener = new OnFragmentInteractionListener() {
+                @Override
+                public void onAddToCartClick(Product product) {
+                    presenter.onAddToCartClick(product);
+                }
+            };
+
     }
 
     @Override
@@ -101,10 +120,11 @@ public class ProductsFragment extends Fragment implements ProductView{
 
     @Override
     public void showTheProductList(List<Product> products) {
-
+        adapter.changeProductList(products);
     }
 
     public interface OnFragmentInteractionListener {
 
+        void onAddToCartClick(Product product);
     }
 }
