@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.shoppingcart.R;
 import com.shoppingcart.ui.Products.ProductsFragment;
+import com.shoppingcart.ui.cart.CartFragment;
 
 public class HomeActivity extends AppCompatActivity implements HomeView {
 
@@ -67,6 +68,12 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @Override
     public void openCartScreen() {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .replace(R.id.content, CartFragment.getInstance(), ProductsFragment.TAG)
+                .commit();
 
     }
 }

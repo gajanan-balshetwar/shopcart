@@ -1,5 +1,6 @@
 package com.shoppingcart.ui.Products;
 
+import com.shoppingcart.data.db.models.ProductInCartModel;
 import com.shoppingcart.data.network.ProductApiCall;
 import com.shoppingcart.data.network.models.Product;
 
@@ -26,12 +27,24 @@ public class ProductPresenterImpl implements ProductPresenter {
 
         if(productList == null || productList.size() == 0){
             productView.showProgressDialog();
+        }else{
+            productView.showTheProductList(productList);
         }
         apiCall.getProducts(apiResponse);
     }
 
     @Override
     public void onAddToCartClick(Product product) {
+
+        ProductInCartModel cartModel = ProductInCartModel.getCartModel(product.getName());
+
+        if(cartModel == null){
+            cartModel = new ProductInCartModel( product);
+        }
+
+        cartModel.setQuantity(cartModel.getQuantity() + 1);
+        cartModel.save();
+        productView.showToast("Product is successfuly added into the cart");
 
     }
 

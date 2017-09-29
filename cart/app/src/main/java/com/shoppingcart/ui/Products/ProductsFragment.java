@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.shoppingcart.R;
 import com.shoppingcart.data.network.models.Product;
@@ -126,5 +127,10 @@ public class ProductsFragment extends Fragment implements ProductView{
     public interface OnFragmentInteractionListener {
 
         void onAddToCartClick(Product product);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

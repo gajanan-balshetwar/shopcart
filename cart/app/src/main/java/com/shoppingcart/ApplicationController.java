@@ -2,13 +2,14 @@ package com.shoppingcart;
 
 import android.app.Application;
 
+import com.orm.SugarApp;
 import com.shoppingcart.data.network.ApiCallService;
 
 /**
  * Created by Gajanan on 29-09-2017.
  */
 
-public class ApplicationController extends Application {
+public class ApplicationController extends SugarApp {
 
     private static ApplicationController instance;
 

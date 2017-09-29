@@ -1,5 +1,7 @@
 package com.shoppingcart.ui.Products;
 
+import android.content.Context;
+
 import com.shoppingcart.data.network.models.Product;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public interface ProductView {
     void showErrorEmptyList();
 
     void showTheProductList(List<Product> products);
+
+    void showToast(String message);
 }
