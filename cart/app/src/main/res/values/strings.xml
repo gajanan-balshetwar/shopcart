@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShoppingCart</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="products">Products</string>
+    <string name="cart">Cart</string>
+</resources>
