@@ -62,7 +62,7 @@ public class ProductPresenterImpl implements ProductPresenter {
         @Override
         public void onError(int statusCode, String errorMessage) {
             productView.hideProgressDialog();
-            if(productList == null || productList.size() == 0) {
+            if(productList == null || (productList!= null &&  productList.size() == 0)) {
                 productView.showErrorDialog(errorMessage);
                 productView.showErrorEmptyList();
             }

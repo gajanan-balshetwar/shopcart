@@ -2,8 +2,10 @@ package com.shoppingcart.ui.Products;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -111,6 +113,17 @@ public class ProductsFragment extends Fragment implements ProductView{
 
     @Override
     public void showErrorDialog(String message) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext())
+                .setTitle("Alert")
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.show();
 
     }
 

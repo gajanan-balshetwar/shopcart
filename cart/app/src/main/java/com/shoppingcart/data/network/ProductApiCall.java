@@ -29,7 +29,7 @@ public class ProductApiCall {
                 if(productApiResponse != null){
                     Log.d("", response);
                     ProductApiResponseModel apiResponse = (new Gson()).fromJson(response, ProductApiResponseModel.class);
-                    if(apiResponse != null && apiResponse.getProducts().size() > 0){
+                    if(apiResponse != null && apiResponse.getProducts() != null && apiResponse.getProducts().size() > 0){
                         productApiResponse.onSuccess(apiResponse.getProducts());
                     }else {
                         productApiResponse.onError(55, "Something went wrong. please try again");
